@@ -155,3 +155,8 @@ try:
     from drf_jwt_backend.local_settings import *
 except ImportError:
     pass
+
+try:
+    from drf_jwt_backend.local_settings import *
+except ImportError:
+    raise ImportError("local settings not found")
