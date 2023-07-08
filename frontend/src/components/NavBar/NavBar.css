@@ -5,6 +5,7 @@ ul {
 }
 
 li {
+  display: flex;
   font-size: 1.25rem;
 }
 
@@ -32,4 +33,23 @@ li {
 .brand {
   cursor: pointer;
   font-size: 2rem;
+}
+
+p {
+  font-size: 20px;
+    align-self: center;
+    padding-right: 1rem;
+}
+
+a {
+  display: flex;
+}
+
+.avatar {
+  padding-right: 1rem;
+}
+
+.yt-icon {
+  align-self: center;
+  padding-left: .5rem;
 }

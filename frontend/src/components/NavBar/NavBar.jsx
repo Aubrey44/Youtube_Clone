@@ -2,6 +2,9 @@ import React from "react";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import { IconContext } from "react-icons/lib";
+import { IoPersonCircleOutline } from 'react-icons/io5';
+import { RiVideoFill } from 'react-icons/ri';
 import "./NavBar.css";
 
 const Navbar = () => {
@@ -12,10 +15,11 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>React/Django JWT</b>
+            <b>YT</b> <IconContext.Provider value={{ size: "1.5em", className: "yt-icon" }}>< RiVideoFill/></IconContext.Provider>
           </Link>
         </li>
         <li>
+          <p>{user.username}</p><IconContext.Provider value={{ size: "2.5em", className: "avatar" }}><IoPersonCircleOutline /></IconContext.Provider>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
           ) : (
