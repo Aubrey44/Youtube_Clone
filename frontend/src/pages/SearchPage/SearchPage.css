@@ -1,7 +1,11 @@
 .home-video-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    /* gap: 7rem; */
+    column-gap: 10rem;
+    row-gap: 3rem;
+    justify-items: center;
+    margin-top: 10rem;
 }
 
 

@@ -1,14 +1,21 @@
 import React from "react";
-import "./VidCards.css"
+import "./VidCards.css";
 
-const VidCards = ({ vids }) => {
+const VidCards = ({ id, title, img }) => {
+  console.log("props check");
+  console.log(id);
+  console.log(title);
+  console.log(img);
+
   return (
     // Need to check pathing to pull correct info from items
-    <div className="video-cards">
+    //TODO: Adjust video links - keep inside project
+
+    <div key={id} className="video-cards">
       <a>
-        <p>Image</p>
-        <p>Title</p>
+        <img src={`${img}`}></img>
       </a>
+      <p>{title}</p>
     </div>
   );
 };
