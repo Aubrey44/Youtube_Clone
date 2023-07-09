@@ -1,13 +1,13 @@
 import React from "react";
+import "./VidCards.css"
 
 const VidCards = ({ vids }) => {
   return (
     // Need to check pathing to pull correct info from items
     <div className="video-cards">
       <a>
-        {/* Do not think this is correct pathing */}
-        <img>{data.items.snippet.thumbnails.default}</img>
-        <p>{data.items.snippet.title}</p>
+        <p>Image</p>
+        <p>Title</p>
       </a>
     </div>
   );
