@@ -15,7 +15,7 @@ const VidCards = ({ id, title, img }) => {
       <a>
         <img src={`${img}`}></img>
       </a>
-      <p>{title}</p>
+      <p className="card-text">{title}</p>
     </div>
   );
 };

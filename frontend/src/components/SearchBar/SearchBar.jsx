@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { KEY } from '../../localKey';
 import axios from "axios";
+import "./SearchBar.css";
 
 
 // !TODO: check API call and see if you need all of the search params

@@ -1,0 +1,23 @@
+div.search-bar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+input {
+    width: 300px;
+    padding: 7px 20px;
+    margin-bottom: 1rem;
+}
+
+button.search-button {
+    background-color: steelblue;
+    color: white;
+    font-size: 1rem;
+    font-family: inherit;
+    max-width: 100px;
+    padding: 0.25rem 0.5rem;
+}
+

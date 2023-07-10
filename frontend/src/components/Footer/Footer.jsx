@@ -3,7 +3,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer>
-      <p>Copyright © 2022</p>{" "}
+      <p>dCC Project #13: Advanced Fullstack Applications</p>{" "}
     </footer>
   );
 };
