@@ -10,6 +10,7 @@ import axios from "axios";
 
 const SearchPage = () => {
   const [vids, setVids] = useState([]);
+  const [vidToPlay, setVidToPlay] = useState("");
 
   useEffect(() => {
     fetchInitialSearch();
@@ -19,8 +20,8 @@ const SearchPage = () => {
     const response = await axios.get(
       `https://www.googleapis.com/youtube/v3/search?q=andor&key=${KEY}&fields=items(id,snippet(title,description,thumbnails/medium))&part=snippet`
     );
-    console.log("API Response");
-    console.log(response.data);
+    // console.log("API Response");
+    // console.log(response.data);
     setVids(response.data.items);
   }
 
@@ -50,23 +51,27 @@ const SearchPage = () => {
 
   // function to get array items from API / video state array
 
-
   function itemLoop() {
     for (let i = 0; i < vids.length; i++) {
-      console.log("Video ID:   " + vids[i].id.videoId);
-      console.log("Video Title:   " + vids[i].snippet.title);
-      console.log(
-        "Video Thumbnail:   " + vids[i].snippet.thumbnails.medium.url
-      );
+      // console.log("Video ID:   " + vids[i].id.videoId);
+      // console.log("Video Title:   " + vids[i].snippet.title);
+      // console.log(
+      //   "Video Thumbnail:   " + vids[i].snippet.thumbnails.medium.url
+      // );
     }
 
     return itemLoop;
   }
-    //   included because video thumbnails would not show if this code was not run previously (unsure why)
+  //   included because video thumbnails would not show if this code was not run previously (unsure why)
+
+  // const handleClick = (event) => {
+  //   event.preventDefault();
+  //   setVidToPlay(videoID);
+  // }
 
   return (
     <section className="container">
-    <SearchBar setVids={setVids}/>
+      <SearchBar setVids={setVids} />
       <div className="home-video-grid">
         {itemLoop()}
         {vids.map((item) => (
@@ -74,6 +79,7 @@ const SearchPage = () => {
             id={item.id.videoId}
             title={item.snippet.title}
             img={item.snippet.thumbnails.medium.url}
+            // handleClick={handleClick}
           />
         ))}
       </div>
