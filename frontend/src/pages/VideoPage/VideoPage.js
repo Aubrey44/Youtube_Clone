@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 
 // !TODO: Take search from homepage => feed into player url
 // !TODO: Take search from vid page => back to homepage
+// !TODO: Update video details on new vid clicked - infinite loop!
+// !TODO: Figure out why you have to disable title first before it runs
 
 const VideoPage = () => {
   const [relatedVids, setRelatedVids] = useState([]);
@@ -28,16 +30,17 @@ const VideoPage = () => {
       const detailsResponse = await axios.get(
         `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${KEY}&part=snippet&type=video);`
       );
-      // console.log("Video player details");
-      // console.log(detailsResponse.data.items);
+      console.log("Video player details");
+      console.log(detailsResponse.data.items);
       setPlayerDetails(detailsResponse.data.items);
+      fetchRelatedVids(detailsResponse.data.items)
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    fetchRelatedVids();
+    // fetchRelatedVids();
     getVidDetails();
   }, []);
 
@@ -54,16 +57,18 @@ const VideoPage = () => {
               height="500"
               src={`https://www.youtube.com/embed/${id}`}
             ></iframe>
-            <p className="video-title">Video Name: {playerDetails[0].snippet.title}</p>
-            <p className="video-description">Description:{playerDetails[0].snippet.description}</p>
+            <p className="video-title">{playerDetails[0].snippet.title}</p>
+            <p className="video-description">{playerDetails[0].snippet.description}</p>
             <div className="comments">Comments</div>
           </div>
           <div className="related-vids">
-            {relatedVids.map((item) => (
+            {relatedVids && relatedVids.map((item) => (
               <VidCards
                 id={item.id.videoId}
                 title={item.snippet.title}
                 img={item.snippet.thumbnails.medium.url}
+                getVidDetails={getVidDetails}
+                setRelatedVids={setRelatedVids}
               />
             ))}
           </div>

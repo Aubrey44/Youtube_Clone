@@ -33,3 +33,14 @@ div.comments {
 iframe {
     border: 3px solid black;
 }
+
+.video-title {
+font-size:x-large;
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+.video-description {
+font-size: medium;
+font-weight: lighter;
+}
