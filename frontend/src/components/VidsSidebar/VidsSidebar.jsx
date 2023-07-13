@@ -1,7 +1,7 @@
 import React from "react";
 import VidCards from "../VidCards/VidCards";
 
-const VidsSidebar = ({relatedVids, getVidDetails, setRelatedVids}) => {
+const VidsSidebar = ({relatedVids, getVidDetails}) => {
   return (
     <div className="related-vids">
       {relatedVids &&
@@ -11,7 +11,6 @@ const VidsSidebar = ({relatedVids, getVidDetails, setRelatedVids}) => {
             title={item.snippet.title}
             img={item.snippet.thumbnails.medium.url}
             getVidDetails={getVidDetails}
-            setRelatedVids={setRelatedVids}
           />
         ))}
     </div>

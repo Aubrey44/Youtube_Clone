@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+// General Imports
 import "./VideoPage.css";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { KEY } from "../../localKey";
-import VidCards from "../../components/VidCards/VidCards";
 import { useParams } from "react-router-dom";
+
+// Component Imports
+import SearchBar from "../../components/SearchBar/SearchBar";
 import Player from "../../components/Player/Player";
 import VidsSidebar from "../../components/VidsSidebar/VidsSidebar";
+
+
 
 // !TODO: Take search from homepage => feed into player url
 // !TODO: Take search from vid page => back to homepage
@@ -30,33 +34,30 @@ const VideoPage = () => {
   async function getVidDetails(videoId) {
     try {
       const details = await axios.get(
-        `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${KEY}&part=snippet&type=video);`
+        // `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${KEY}&part=snippet&type=video);`
+        `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${KEY}&fields=items(id,snippet(title,description))&part=snippet`
       );
       console.log("API Response");
       console.log(details.data.items[0]);
 
-      const data = await details.data;
 
       console.log("State update 1: details.data.items");
-      setPlayerDetails(data.items[0]);
-      console.log(playerDetails)
+      setPlayerDetails(details.data.items);
+      console.log(playerDetails);
 
-      console.log("State update 2: details[0]");
-      setPlayerDetails(details[0]);
-      console.log(playerDetails)
-      
-      console.log("State update 2: details.data");
+      console.log("State update 2: details.data.items[0]");
+      setPlayerDetails(details.data.items[0]);
+      console.log(playerDetails);
+
+      console.log("State update 3: details.data");
       setPlayerDetails(details.data);
-      console.log(playerDetails)
-      
+      console.log(playerDetails);
 
-      console.log("State update 2: details.items");
-      setPlayerDetails(details.itmes);
-      console.log(playerDetails)
-
+      console.log("State update 4: details.items");
+      setPlayerDetails(details.items);
+      console.log(playerDetails);
 
       fetchRelatedVids(details.data.items);
-
     } catch (error) {
       console.log(error);
     }
@@ -66,21 +67,30 @@ const VideoPage = () => {
     getVidDetails(id);
   }, []);
 
-
   return (
     <>
       <section className="player-page">
-        <SearchBar />        
-          {/* <Player id={id} playerDetails={playerDetails}/> */}        
+        <SearchBar />
+        <div className="container">
+          <Player
+            id={id}
+            playerDetails={playerDetails}
+            relatedVids={relatedVids}
+            setRelatedVids={setRelatedVids}
+            getVidDetails={getVidDetails}
+          />
+          <VidsSidebar
+            relatedVids={relatedVids}
+            getVidDetails={getVidDetails}
+            setRelatedVids={setRelatedVids}
+          />
+        </div>
       </section>
     </>
   );
 };
 
 export default VideoPage;
-
-
-
 
 // PLAYER CODE
 
@@ -93,9 +103,6 @@ export default VideoPage;
 // ></iframe>
 // {/* <p className="video-title">{playerDetails[0].snippet.title}</p>
 // <p className="video-description">{playerDetails[0].snippet.description}</p> */}
-
-
-
 
 // RELATED VIDES CODE
 // {/* <div className="related-vids">
