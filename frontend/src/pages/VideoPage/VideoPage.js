@@ -5,6 +5,8 @@ import axios from "axios";
 import { KEY } from "../../localKey";
 import VidCards from "../../components/VidCards/VidCards";
 import { useParams } from "react-router-dom";
+import Player from "../../components/Player/Player";
+import VidsSidebar from "../../components/VidsSidebar/VidsSidebar";
 
 // !TODO: Take search from homepage => feed into player url
 // !TODO: Take search from vid page => back to homepage
@@ -13,7 +15,7 @@ import { useParams } from "react-router-dom";
 
 const VideoPage = () => {
   const [relatedVids, setRelatedVids] = useState([]);
-  const [playerDetails, setPlayerDetails] = useState({});
+  const [playerDetails, setPlayerDetails] = useState([]);
   const { id } = useParams();
 
   async function fetchRelatedVids() {
@@ -25,54 +27,51 @@ const VideoPage = () => {
     setRelatedVids(response.data.items);
   }
 
-  async function getVidDetails() {
+  async function getVidDetails(videoId) {
     try {
-      const detailsResponse = await axios.get(
-        `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${KEY}&part=snippet&type=video);`
+      const details = await axios.get(
+        `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${KEY}&part=snippet&type=video);`
       );
-      console.log("Video player details");
-      console.log(detailsResponse.data.items);
-      setPlayerDetails(detailsResponse.data.items);
-      fetchRelatedVids(detailsResponse.data.items)
+      console.log("API Response");
+      console.log(details.data.items[0]);
+
+      const data = await details.data;
+
+      console.log("State update 1: details.data.items");
+      setPlayerDetails(data.items[0]);
+      console.log(playerDetails)
+
+      console.log("State update 2: details[0]");
+      setPlayerDetails(details[0]);
+      console.log(playerDetails)
+      
+      console.log("State update 2: details.data");
+      setPlayerDetails(details.data);
+      console.log(playerDetails)
+      
+
+      console.log("State update 2: details.items");
+      setPlayerDetails(details.itmes);
+      console.log(playerDetails)
+
+
+      fetchRelatedVids(details.data.items);
+
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    // fetchRelatedVids();
-    getVidDetails();
+    getVidDetails(id);
   }, []);
 
-  // https://www.googleapis.com/youtube/v3/search?relatedToVideoId={VIDEO ID HERE}&type=video&key={API KEY HERE} //
 
   return (
     <>
       <section className="player-page">
-        <SearchBar />
-        <div className="container">
-          <div className="video-player">
-            <iframe
-              width="900"
-              height="500"
-              src={`https://www.youtube.com/embed/${id}`}
-            ></iframe>
-            <p className="video-title">{playerDetails[0].snippet.title}</p>
-            <p className="video-description">{playerDetails[0].snippet.description}</p>
-            <div className="comments">Comments</div>
-          </div>
-          <div className="related-vids">
-            {relatedVids && relatedVids.map((item) => (
-              <VidCards
-                id={item.id.videoId}
-                title={item.snippet.title}
-                img={item.snippet.thumbnails.medium.url}
-                getVidDetails={getVidDetails}
-                setRelatedVids={setRelatedVids}
-              />
-            ))}
-          </div>
-        </div>
+        <SearchBar />        
+          {/* <Player id={id} playerDetails={playerDetails}/> */}        
       </section>
     </>
   );
@@ -80,10 +79,32 @@ const VideoPage = () => {
 
 export default VideoPage;
 
-// {relatedVids.map((item) => (
-//     <VidCards
-//       id={item.id.videoId}
-//       title={item.snippet.title}
-//       img={item.snippet.thumbnails.medium.url}
 
-// &fields=items(id,snippet(title,description))
+
+
+// PLAYER CODE
+
+// // <div className="container">
+// <div className="video-player">
+// <iframe
+//   width="900"
+//   height="500"
+//   src={`https://www.youtube.com/embed/${id}`}
+// ></iframe>
+// {/* <p className="video-title">{playerDetails[0].snippet.title}</p>
+// <p className="video-description">{playerDetails[0].snippet.description}</p> */}
+
+
+
+
+// RELATED VIDES CODE
+// {/* <div className="related-vids">
+// {relatedVids && relatedVids.map((item) => (
+//   <VidCards
+//     id={item.id.videoId}
+//     title={item.snippet.title}
+//     img={item.snippet.thumbnails.medium.url}
+//     getVidDetails={getVidDetails}
+//   />
+// ))}
+// </div> */}

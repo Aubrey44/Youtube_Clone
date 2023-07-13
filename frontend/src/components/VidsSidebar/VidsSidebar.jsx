@@ -1,6 +1,7 @@
 import React from "react";
+import VidCards from "../VidCards/VidCards";
 
-const RelatedVids = () => {
+const VidsSidebar = ({relatedVids, getVidDetails, setRelatedVids}) => {
   return (
     <div className="related-vids">
       {relatedVids &&
@@ -17,4 +18,4 @@ const RelatedVids = () => {
   );
 };
 
-export default RelatedVids;
+export default VidsSidebar;

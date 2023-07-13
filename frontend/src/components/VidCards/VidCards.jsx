@@ -2,7 +2,7 @@ import React from "react";
 import "./VidCards.css";
 import { Link } from "react-router-dom";
 
-const VidCards = ({ id, title, img, getVidDetails, setRelatedVids}) => {
+const VidCards = ({ id, title, img, getVidDetails}) => {
   // console.log("props check");
   // console.log(id);
   // console.log(title);
@@ -12,7 +12,7 @@ const VidCards = ({ id, title, img, getVidDetails, setRelatedVids}) => {
 
 
     <div key={id} className="video-cards">
-      <Link to={`/player/${id}`} onClick={() => getVidDetails()} >
+      <Link to={`/player/${id}`} onClick={() => getVidDetails({id})} >
         <img src={`${img}`}></img>
       </Link>
       <p className="card-text">{title}</p>
@@ -21,11 +21,3 @@ const VidCards = ({ id, title, img, getVidDetails, setRelatedVids}) => {
 };
 
 export default VidCards;
-
-// Links to youtube player, need it to go to project video page
-//* <a href={`https://www.youtube.com/embed/${id}`}> */
-// <Link to={`/player/${id}`} ></Link>
-
-
-
-// onClick={() => getVidDetails()}
