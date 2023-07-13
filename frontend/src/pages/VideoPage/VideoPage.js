@@ -38,24 +38,27 @@ const VideoPage = () => {
         `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${KEY}&fields=items(id,snippet(title,description))&part=snippet`
       );
       console.log("API Response");
-      console.log(details.data.items[0]);
-
-
-      console.log("State update 1: details.data.items");
-      setPlayerDetails(details.data.items);
-      console.log(playerDetails);
-
-      console.log("State update 2: details.data.items[0]");
       setPlayerDetails(details.data.items[0]);
+      console.log(details.data.items[0]);
+      console.log("Player Details State");
       console.log(playerDetails);
 
-      console.log("State update 3: details.data");
-      setPlayerDetails(details.data);
-      console.log(playerDetails);
 
-      console.log("State update 4: details.items");
-      setPlayerDetails(details.items);
-      console.log(playerDetails);
+      // console.log("State update 1: details.data.items");
+      // setPlayerDetails(details.data.items);
+      // console.log(playerDetails);
+
+      // console.log("State update 2: details.data.items[0]");
+      // setPlayerDetails(details.data.items[0]);
+      // console.log(playerDetails);
+
+      // console.log("State update 3: details.data");
+      // setPlayerDetails(details.data);
+      // console.log(playerDetails);
+
+      // console.log("State update 4: details.items");
+      // setPlayerDetails(details.items);
+      // console.log(playerDetails);
 
       fetchRelatedVids(details.data.items);
     } catch (error) {
