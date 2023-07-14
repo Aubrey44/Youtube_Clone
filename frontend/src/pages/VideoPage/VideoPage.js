@@ -26,15 +26,13 @@ const VideoPage = () => {
     const response = await axios.get(
       `https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${id}&type=video&key=${KEY}&fields=items(id,snippet(title,description,thumbnails/medium))&part=snippet`
     );
-    // console.log("API Response");
-    // console.log(response.data.items);
+
     setRelatedVids(response.data.items);
   }
 
   async function getVidDetails(videoId) {
     try {
       const details = await axios.get(
-        // `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${KEY}&part=snippet&type=video);`
         `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${KEY}&fields=items(id,snippet(title,description))&part=snippet`
       );
       console.log("API Response");
@@ -43,24 +41,7 @@ const VideoPage = () => {
       console.log("Player Details State");
       console.log(playerDetails);
 
-
-      // console.log("State update 1: details.data.items");
-      // setPlayerDetails(details.data.items);
-      // console.log(playerDetails);
-
-      // console.log("State update 2: details.data.items[0]");
-      // setPlayerDetails(details.data.items[0]);
-      // console.log(playerDetails);
-
-      // console.log("State update 3: details.data");
-      // setPlayerDetails(details.data);
-      // console.log(playerDetails);
-
-      // console.log("State update 4: details.items");
-      // setPlayerDetails(details.items);
-      // console.log(playerDetails);
-
-      fetchRelatedVids(details.data.items);
+      // fetchRelatedVids(details.data.items);
     } catch (error) {
       console.log(error);
     }
@@ -68,6 +49,7 @@ const VideoPage = () => {
 
   useEffect(() => {
     getVidDetails(id);
+    fetchRelatedVids();
   }, []);
 
   return (
