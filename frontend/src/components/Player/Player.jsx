@@ -1,5 +1,6 @@
 import React from "react";
 import CommentPost from "../CommentPost/CommentPost";
+import CommentDisplay from "../CommentDisplay/CommentDisplay";
 
 const Player = ({ id, playerDetails }) => {
 
@@ -17,6 +18,8 @@ const Player = ({ id, playerDetails }) => {
           {playerDetails[0].snippet.description}
         </p> */}
       <CommentPost />
+      <CommentDisplay />
+
     </div>
   );
 };
