@@ -1,0 +1,11 @@
+form.comment-form {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: baseline;
+}
+
+input {
+    width: 600px;
+}

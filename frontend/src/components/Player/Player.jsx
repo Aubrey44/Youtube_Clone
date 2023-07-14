@@ -1,4 +1,5 @@
 import React from "react";
+import CommentPost from "../CommentPost/CommentPost";
 
 const Player = ({ id, playerDetails }) => {
 
@@ -15,7 +16,7 @@ const Player = ({ id, playerDetails }) => {
         <p className="video-description">
           {playerDetails[0].snippet.description}
         </p> */}
-      <div className="comments">Comments</div>
+      <CommentPost />
     </div>
   );
 };

@@ -15,6 +15,7 @@ div.container {
 div.video-player {
     border: 2px solid red;
     margin-right: 1rem;
+    margin-bottom: 5rem;
 }
 
 div.related-vids {
