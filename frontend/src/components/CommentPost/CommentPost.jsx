@@ -16,7 +16,7 @@ const CommentPost = () => {
           value={formValues.comment}
         />
 
-        <button type="submit">Submit</button>
+        <button className='comment-button'type="submit">Submit</button>
       </form>
     </div>
   );

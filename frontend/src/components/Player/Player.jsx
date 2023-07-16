@@ -13,10 +13,10 @@ const Player = ({ id, playerDetails }) => {
         height="500"
         src={`https://www.youtube.com/embed/${id}`}
       ></iframe>
-      {/* <p className="video-title">{playerDetails[0].snippet.title}</p>
+      <p className="video-title">{playerDetails.snippet?.title}</p>
         <p className="video-description">
-          {playerDetails[0].snippet.description}
-        </p> */}
+          {playerDetails.snippet?.description}
+        </p>
       <CommentPost />
       <CommentDisplay />
 

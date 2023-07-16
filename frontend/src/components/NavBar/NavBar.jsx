@@ -19,9 +19,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <p>{user.username}</p><IconContext.Provider value={{ size: "2.5em", className: "avatar" }}><IoPersonCircleOutline /></IconContext.Provider>
           {user ? (
-            <button onClick={logoutUser}>Logout</button>
+          <><p>{user.username}</p><IconContext.Provider value={{ size: "2.5em", className: "avatar" }}><IoPersonCircleOutline /></IconContext.Provider><button onClick={logoutUser}>Logout</button></>
           ) : (
             <button onClick={() => navigate("/login")}>Login</button>
           )}

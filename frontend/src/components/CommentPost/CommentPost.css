@@ -9,3 +9,12 @@ form.comment-form {
 input {
     width: 600px;
 }
+
+button.comment-button {
+    background-color: steelblue;
+    color: white;
+    font-size: 1rem;
+    font-family: inherit;
+    max-width: 100px;
+    padding: 0.25rem 0.5rem;
+}

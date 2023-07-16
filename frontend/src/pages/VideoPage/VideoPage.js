@@ -50,7 +50,7 @@ const VideoPage = () => {
   useEffect(() => {
     getVidDetails(id);
     fetchRelatedVids();
-  }, []);
+  }, [id]);
 
   return (
     <>
