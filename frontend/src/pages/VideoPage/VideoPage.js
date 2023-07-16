@@ -35,11 +35,11 @@ const VideoPage = () => {
       const details = await axios.get(
         `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${KEY}&fields=items(id,snippet(title,description))&part=snippet`
       );
-      console.log("API Response");
-      setPlayerDetails(details.data.items[0]);
-      console.log(details.data.items[0]);
-      console.log("Player Details State");
-      console.log(playerDetails);
+      // console.log("API Response");
+      // setPlayerDetails(details.data.items[0]);
+      // console.log(details.data.items[0]);
+      // console.log("Player Details State");
+      // console.log(playerDetails);
 
       // fetchRelatedVids(details.data.items);
     } catch (error) {
@@ -76,27 +76,3 @@ const VideoPage = () => {
 };
 
 export default VideoPage;
-
-// PLAYER CODE
-
-// // <div className="container">
-// <div className="video-player">
-// <iframe
-//   width="900"
-//   height="500"
-//   src={`https://www.youtube.com/embed/${id}`}
-// ></iframe>
-// {/* <p className="video-title">{playerDetails[0].snippet.title}</p>
-// <p className="video-description">{playerDetails[0].snippet.description}</p> */}
-
-// RELATED VIDES CODE
-// {/* <div className="related-vids">
-// {relatedVids && relatedVids.map((item) => (
-//   <VidCards
-//     id={item.id.videoId}
-//     title={item.snippet.title}
-//     img={item.snippet.thumbnails.medium.url}
-//     getVidDetails={getVidDetails}
-//   />
-// ))}
-// </div> */}

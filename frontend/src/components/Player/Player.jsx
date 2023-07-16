@@ -4,8 +4,6 @@ import CommentDisplay from "../CommentDisplay/CommentDisplay";
 
 const Player = ({ id, playerDetails }) => {
 
-    console.log (playerDetails)
-
   return (
     <div className="video-player">
       <iframe

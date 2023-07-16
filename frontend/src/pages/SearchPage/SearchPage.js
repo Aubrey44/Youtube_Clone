@@ -25,49 +25,18 @@ const SearchPage = () => {
     setVids(response.data.items);
   }
 
-  // Tests
-
-  //   console.log("Video state test")
-  //   console.log(vids)
-
-  //   //   works when you specify specific array item
-  //   console.log("Level one check - vids[0].id")
-  //   console.log(vids[0].id)
-
-  //   //   works when you specify specific array item
-  //   console.log("Level one check - vids[0].snippet")
-  //   console.log(vids[0].snippet)
-  //   // works correctly!
-
-  //   //   works when you specify specific array item
-  //   console.log("Level two check - vids[0].snippet.title")
-  //   console.log(vids[0].snippet.title)
-  //   // works correctly!
-
-  //   //   works when you specify specific array item
-  //   console.log("Level three check - vids[0].snippet.thumbnails.default")
-  //   console.log(vids[0].snippet.thumbnails.default)
-  //   // returns height, width, and url - not sure how that will function when called
-
-  // function to get array items from API / video state array
-
   function itemLoop() {
     for (let i = 0; i < vids.length; i++) {
-      console.log("Video ID:   " + vids[i].id.videoId);
-      console.log("Video Title:   " + vids[i].snippet.title);
-      console.log(
-        "Video Thumbnail:   " + vids[i].snippet.thumbnails.medium.url
-      );
+      // console.log("Video ID:   " + vids[i].id.videoId);
+      // console.log("Video Title:   " + vids[i].snippet.title);
+      // console.log(
+      //   "Video Thumbnail:   " + vids[i].snippet.thumbnails.medium.url
+      // );
     }
 
     return itemLoop;
   }
-  //   included because video thumbnails would not show if this code was not run previously (unsure why)
 
-  // const handleClick = (event) => {
-  //   event.preventDefault();
-  //   setVidToPlay(videoID);
-  // }
 
   return (
     <section className="container">
