@@ -1,8 +1,14 @@
-import React from "react";
+import React from 'react';
 import CommentPost from "../CommentPost/CommentPost";
 import CommentDisplay from "../CommentDisplay/CommentDisplay";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
+
+
 
 const Player = ({ id, playerDetails }) => {
+
+  const { user } = useContext(AuthContext);
 
   return (
     <div className="video-player">
@@ -12,12 +18,14 @@ const Player = ({ id, playerDetails }) => {
         src={`https://www.youtube.com/embed/${id}`}
       ></iframe>
       <p className="video-title">{playerDetails.snippet?.title}</p>
-        <p className="video-description">
-          {playerDetails.snippet?.description}
-        </p>
-      <CommentPost />
-      <CommentDisplay />
-
+      <p className="video-description">{playerDetails.snippet?.description}</p>
+      {user ? (
+        <CommentPost />
+      ) : (
+        <p>Must be logged in to comment!</p>
+      )}
+      
+      <CommentDisplay id={id}/>
     </div>
   );
 };

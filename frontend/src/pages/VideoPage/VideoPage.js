@@ -36,12 +36,12 @@ const VideoPage = () => {
         `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${KEY}&fields=items(id,snippet(title,description))&part=snippet`
       );
       // console.log("API Response");
-      // setPlayerDetails(details.data.items[0]);
+      setPlayerDetails(details.data.items[0]);
       // console.log(details.data.items[0]);
       // console.log("Player Details State");
       // console.log(playerDetails);
 
-      // fetchRelatedVids(details.data.items);
+      fetchRelatedVids(details.data.items);
     } catch (error) {
       console.log(error);
     }

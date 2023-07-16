@@ -27,11 +27,11 @@ const SearchPage = () => {
 
   function itemLoop() {
     for (let i = 0; i < vids.length; i++) {
-      // console.log("Video ID:   " + vids[i].id.videoId);
-      // console.log("Video Title:   " + vids[i].snippet.title);
-      // console.log(
-      //   "Video Thumbnail:   " + vids[i].snippet.thumbnails.medium.url
-      // );
+      console.log("Video ID:   " + vids[i].id.videoId);
+      console.log("Video Title:   " + vids[i].snippet.title);
+      console.log(
+        "Video Thumbnail:   " + vids[i].snippet.thumbnails.medium.url
+      );
     }
 
     return itemLoop;
