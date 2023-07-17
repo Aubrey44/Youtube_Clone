@@ -20,7 +20,7 @@ const Player = ({ id, playerDetails }) => {
       <p className="video-title">{playerDetails.snippet?.title}</p>
       <p className="video-description">{playerDetails.snippet?.description}</p>
       {user ? (
-        <CommentPost />
+        <CommentPost id={id}/>
       ) : (
         <p>Must be logged in to comment!</p>
       )}
