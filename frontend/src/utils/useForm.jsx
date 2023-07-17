@@ -12,7 +12,7 @@ const useForm = (callback) => {
   const handleChange = (event) => {
     event.persist();
 
-    setFormValues({ ...formValues, [event.target.name]: event.target.value, video_id: {id} });
+    setFormValues({ ...formValues, [event.target.name]: event.target.value, video_id: id });
   };
 
   const handleSubmit = (event) => {

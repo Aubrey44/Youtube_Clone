@@ -1,23 +1,10 @@
 import React from "react";
 import "./CommentPost.css";
 import useForm from "../../utils/useForm";
-import axios from "axios";
 
-const CommentPost = ({ id }) => {
-
+const CommentPost = () => {
+  
   const { formValues, handleChange, handleSubmit } = useForm();
-
-  // const addComment = () => {
-  //   try {
-  //     let response = axios
-  //       .post(`http://127.0.0.1:8000/api/comment/${id}`, formValues)
-  //       .then((response) => {
-  //         console.log(response.status, response.data.token);
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <div>
@@ -25,14 +12,12 @@ const CommentPost = ({ id }) => {
         <label>Comment</label>
         <input
           type="text"
-          name="text"
+          name="comment"
           onChange={handleChange}
-          value={formValues.text}
+          value={formValues.comment}
         />
 
-        <button className="comment-button" type="submit">
-          Submit
-        </button>
+        <button className='comment-button'type="submit">Submit</button>
       </form>
     </div>
   );
