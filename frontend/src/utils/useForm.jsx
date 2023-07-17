@@ -20,7 +20,7 @@ const useForm = (callback) => {
 
     try {
       axios
-        .post(`http://127.0.0.1:8000/api/comment/${id}`, formValues, {headers: {Authorization: `Bearer ${token}`}})
+        .post(`http://127.0.0.1:8000/api/comment/${id}`, {video_id: `${id}`, text: formValues.comment, likes: 0, dislikes: 0}, {headers: {Authorization: `Bearer ${token}`}})
         .then((response) => {
           console.log(response.status, response.data.token);
         });
