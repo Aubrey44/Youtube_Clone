@@ -24,5 +24,3 @@ const CommentPost = () => {
 };
 
 export default CommentPost;
-
-// Line 11: // required={true}

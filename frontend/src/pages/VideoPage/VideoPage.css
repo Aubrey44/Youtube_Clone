@@ -13,13 +13,11 @@ div.container {
 
 
 div.video-player {
-    border: 2px solid red;
     margin-right: 1rem;
     margin-bottom: 5rem;
 }
 
 div.related-vids {
-    border: 2px solid blue;
     min-width: 400px;
     min-height: 450px;
     display: flex;
@@ -27,7 +25,6 @@ div.related-vids {
     align-items: center;
 }
 div.comments {
-    border: 2px solid green;
     width: 900px;
     margin-top: 3rem;
 }

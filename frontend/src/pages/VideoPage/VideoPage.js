@@ -20,6 +20,7 @@ import VidsSidebar from "../../components/VidsSidebar/VidsSidebar";
 const VideoPage = () => {
   const [relatedVids, setRelatedVids] = useState([]);
   const [playerDetails, setPlayerDetails] = useState([]);
+  const [comments, setComments] = useState([]);
   const { id } = useParams();
 
   async function fetchRelatedVids() {
@@ -47,9 +48,16 @@ const VideoPage = () => {
     }
   }
 
+  async function getAllComments() {
+    const response = await axios.get(`http://127.0.0.1:8000/api/comment/${id}`);
+    console.log(response.data);
+    setComments(response.data);
+  }
+
   useEffect(() => {
     getVidDetails(id);
-    fetchRelatedVids();
+    fetchRelatedVids()
+    getAllComments();
   }, [id]);
 
   return (
@@ -63,6 +71,7 @@ const VideoPage = () => {
             relatedVids={relatedVids}
             setRelatedVids={setRelatedVids}
             getVidDetails={getVidDetails}
+            comments={comments}
           />
           <VidsSidebar
             relatedVids={relatedVids}

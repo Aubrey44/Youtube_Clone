@@ -1,22 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import React from "react";
 
 import "./CommentDisplay.css";
 
-const CommentDisplay = () => {
-  const [comments, setComments] = useState([]);
-  const { id } = useParams();
-
-  async function getAllComments() {
-    const response = await axios.get(`http://127.0.0.1:8000/api/comment/${id}`);
-    console.log(response.data);
-    setComments(response.data);
-  }
-
-  useEffect(() => {
-    getAllComments();
-  }, [id]);
+const CommentDisplay = ({ comments }) => {
 
   return (
     <>

@@ -45,6 +45,7 @@ const SearchPage = () => {
         {itemLoop()}
         {vids.map((item) => (
           <VidCards
+            key={item.id.videoId}
             id={item.id.videoId}
             title={item.snippet.title}
             img={item.snippet.thumbnails.medium.url}
