@@ -20,15 +20,12 @@ const CommentDisplay = () => {
 
   return (
     <>
-      <div className="comment-display">Comment Display</div>
-      <div className="comment-item">
-        {comments &&
-          comments.map((item) => (
-            <div key={item.id}>
-            <p className="comment-username">{item.user.username}</p>
+      <div className="comment-display">
+        {comments ? comments && comments.map((item) => (
+            <div key={item.id} className="comment-block">
+              <p className="comment-username">{item.user.username}</p>
               <p className="comment-text">{item.text}</p>
-            </div>
-          ))}
+            </div>)) : <p>There are no comments for this video</p>}
       </div>
     </>
   );

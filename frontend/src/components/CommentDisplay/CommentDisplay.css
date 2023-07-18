@@ -3,3 +3,17 @@ div.comment-display {
     margin-bottom: 2rem;
     border: 2px solid purple;
 }
+
+div.comment-block {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid grey;
+    padding: .5rem;
+    margin: 1rem;
+    background-color: aliceblue;
+    border-radius: 3px;
+}
+
+.comment-username {
+    font-weight: bold;
+}
