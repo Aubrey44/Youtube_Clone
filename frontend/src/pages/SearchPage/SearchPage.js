@@ -37,7 +37,6 @@ const SearchPage = () => {
     return itemLoop;
   }
 
-
   return (
     <section className="container">
       <SearchBar setVids={setVids} />

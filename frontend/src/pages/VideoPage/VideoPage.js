@@ -12,13 +12,12 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Player from "../../components/Player/Player";
 import VidsSidebar from "../../components/VidsSidebar/VidsSidebar";
 
-
 // !TODO: Take search from vid page => back to homepage
 
 const VideoPage = () => {
   const [relatedVids, setRelatedVids] = useState([]);
   const [playerDetails, setPlayerDetails] = useState([]);
-  const {comments, setComments} = useContext(CommentContext);
+  const { comments, setComments } = useContext(CommentContext);
   const { id } = useParams();
 
   async function fetchRelatedVids() {
@@ -54,7 +53,7 @@ const VideoPage = () => {
 
   useEffect(() => {
     getVidDetails(id);
-    fetchRelatedVids()
+    fetchRelatedVids();
     getAllComments(comments);
   }, []);
 
@@ -69,7 +68,6 @@ const VideoPage = () => {
             relatedVids={relatedVids}
             setRelatedVids={setRelatedVids}
             getVidDetails={getVidDetails}
-          
           />
           <VidsSidebar
             relatedVids={relatedVids}

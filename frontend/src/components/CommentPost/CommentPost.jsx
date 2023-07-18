@@ -3,7 +3,6 @@ import "./CommentPost.css";
 import useForm from "../../utils/useForm";
 
 const CommentPost = () => {
-  
   const { formValues, handleChange, handleSubmit } = useForm();
 
   return (
@@ -17,7 +16,9 @@ const CommentPost = () => {
           value={formValues.comment}
         />
 
-        <button className='comment-button'type="submit">Submit</button>
+        <button className="comment-button" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
