@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { KEY } from "../../localKey";
 import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import CommentContext from "../../context/CommentContext";
 
 // Component Imports
 import SearchBar from "../../components/SearchBar/SearchBar";
@@ -11,16 +13,12 @@ import Player from "../../components/Player/Player";
 import VidsSidebar from "../../components/VidsSidebar/VidsSidebar";
 
 
-
-// !TODO: Take search from homepage => feed into player url
 // !TODO: Take search from vid page => back to homepage
-// !TODO: Update video details on new vid clicked - infinite loop!
-// !TODO: Figure out why you have to disable title first before it runs
 
 const VideoPage = () => {
   const [relatedVids, setRelatedVids] = useState([]);
   const [playerDetails, setPlayerDetails] = useState([]);
-  const [comments, setComments] = useState([]);
+  const {comments, setComments} = useContext(CommentContext);
   const { id } = useParams();
 
   async function fetchRelatedVids() {
@@ -57,8 +55,8 @@ const VideoPage = () => {
   useEffect(() => {
     getVidDetails(id);
     fetchRelatedVids()
-    getAllComments();
-  }, [id]);
+    getAllComments(comments);
+  }, []);
 
   return (
     <>
@@ -71,7 +69,7 @@ const VideoPage = () => {
             relatedVids={relatedVids}
             setRelatedVids={setRelatedVids}
             getVidDetails={getVidDetails}
-            comments={comments}
+          
           />
           <VidsSidebar
             relatedVids={relatedVids}

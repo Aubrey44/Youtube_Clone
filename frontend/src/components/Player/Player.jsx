@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthContext";
 
 
 
-const Player = ({ id, playerDetails, comments }) => {
+const Player = ({ id, playerDetails }) => {
 
   const { user } = useContext(AuthContext);
 
@@ -25,7 +25,7 @@ const Player = ({ id, playerDetails, comments }) => {
         <p>Must be logged in to comment!</p>
       )}
       
-      <CommentDisplay id={id} comments={comments}/>
+      <CommentDisplay id={id}/>
     </div>
   );
 };

@@ -3,11 +3,12 @@ import { createContext, useState } from "react";
 const CommentContext = createContext();
 
 export const CommentProvider = ({ children }) => {
-
-  const [comment, setComment] = useState([]);
+    
+  const [comments, setComments] = useState([]);
 
   const context = {
-    comment, setComment,
+    comments,
+    setComments,
   };
 
   return (

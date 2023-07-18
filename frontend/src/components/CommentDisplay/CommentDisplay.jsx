@@ -1,8 +1,12 @@
 import React from "react";
+import { useContext } from "react";
+import CommentContext from "../../context/CommentContext";
 
 import "./CommentDisplay.css";
 
-const CommentDisplay = ({ comments }) => {
+const CommentDisplay = () => {
+
+  const {comments} = useContext(CommentContext);
 
   return (
     <>
