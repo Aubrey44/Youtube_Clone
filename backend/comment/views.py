@@ -10,12 +10,12 @@ from .serializers import CommentSerializer
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_comments(request, video_id):
-    comments = Comment.objects.all()
+def get_all_comments_by_id(request, video_id):
+    comments = Comment.objects.filter(video_id=video_id)
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def user_comments(request, video_id):
     print(
@@ -26,7 +26,13 @@ def user_comments(request, video_id):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    
+'''
+GET Request by user id (commented out because conflicting with get all comments request)
+
     elif request.method == 'GET':
         comments = Comment.objects.filter(user_id=request.user.id)
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
+'''

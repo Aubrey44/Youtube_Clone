@@ -4,8 +4,8 @@ from comment import views
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
 urlpatterns = [
-path('', views.get_all_comments),
-path('<str:video_id>', views.user_comments),
+path('<str:video_id>', views.get_all_comments_by_id),
+path('postto/<str:video_id>', views.user_comments),
 ]
 
 
