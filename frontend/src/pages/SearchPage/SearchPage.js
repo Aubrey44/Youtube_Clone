@@ -10,7 +10,7 @@ import axios from "axios";
 
 const SearchPage = () => {
   const [vids, setVids] = useState([]);
-  const [vidToPlay, setVidToPlay] = useState("");
+  // const [vidToPlay, setVidToPlay] = useState("");
 
   useEffect(() => {
     fetchInitialSearch();
@@ -48,7 +48,6 @@ const SearchPage = () => {
             id={item.id.videoId}
             title={item.snippet.title}
             img={item.snippet.thumbnails.medium.url}
-            // handleClick={handleClick}
           />
         ))}
       </div>

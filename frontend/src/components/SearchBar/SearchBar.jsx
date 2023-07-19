@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { KEY } from "../../localKey";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./SearchBar.css";
 
 const SearchBar = ({ setVids }) => {
@@ -9,6 +10,7 @@ const SearchBar = ({ setVids }) => {
   const onSearch = (searchTerm) => {
     console.log("search", searchTerm);
     userSearch(query);
+
   };
 
   async function userSearch(searchTerm) {
@@ -28,9 +30,12 @@ const SearchBar = ({ setVids }) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button className="search-button" onClick={(e) => onSearch(query)}>
-        Search
-      </button>
+      {/* Need to update to bring in information to search page */}
+      <Link to={`/`}>
+        <button className="search-button" onClick={(e) => onSearch(query)}>
+          Search
+        </button>
+      </Link>
     </div>
   );
 };
