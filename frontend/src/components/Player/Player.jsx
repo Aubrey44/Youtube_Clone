@@ -13,6 +13,7 @@ const Player = ({ id, playerDetails }) => {
         width="900"
         height="500"
         src={`https://www.youtube.com/embed/${id}`}
+        allowFullScreen="True"
       ></iframe>
       <p className="video-title">{playerDetails.snippet?.title}</p>
       <p className="video-description">{playerDetails.snippet?.description}</p>

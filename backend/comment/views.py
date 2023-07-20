@@ -17,7 +17,7 @@ def get_all_comments_by_id(request, video_id):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def user_comments(request, video_id):
+def user_comments(request):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'POST':

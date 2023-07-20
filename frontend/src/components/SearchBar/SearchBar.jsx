@@ -32,7 +32,7 @@ const SearchBar = ({ setVids }) => {
       />
       {/* Need to update to bring in information to search page */}
       <Link to={`/`}>
-        <button className="search-button" onClick={(e) => onSearch(query)}>
+        <button className="search-button" onClick={() => onSearch(query)}>
           Search
         </button>
       </Link>
